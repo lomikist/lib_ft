@@ -1,36 +1,27 @@
+#include <string.h>
+#include <stdio.h>
+
 void *ft_memmove(void *dest, const void *src, size_t n)
 {
-	int	i;
+	unsigned int	i;
+	unsigned char* srccp = (unsigned char *)src;
 	unsigned char* str = dest;
 
 	i = 0;
-	if (dest > src)
+	if ((src < dest) && ((src + n) > dest))
 	{
-		
-	} else if (src > dest)
-	{
-		
+		while (i < n)
+		{
+			i++;
+			*str++ = *srccp;
+		}
 	} else {
 		while (i < n)
 		{
 			i++;
-			*str++ = src;
+			*str++ = *((unsigned char *)src);
 		}
 	}
 	
 	return dest;
-}
-
-#include <string.h>
-#include <stdio.h>
-int main()
-{
-	char str[50];
-
-	strcpy(str, "This is string.h library function");
-	puts(str);
-
-	// memset(str, 'g', 5);
-	puts(ft_memset(str, 'g', 5));
-
 }
