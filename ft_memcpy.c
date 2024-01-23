@@ -1,39 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arsargsy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/22 16:59:10 by arsargsy          #+#    #+#             */
-/*   Updated: 2024/01/22 17:38:41 by arsargsy         ###   ########.fr       */
+/*   Created: 2024/01/22 17:42:41 by arsargsy          #+#    #+#             */
+/*   Updated: 2024/01/22 22:53:23 by arsargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void*	ft_memset(void *dest, int c, unsigned int len)
-{
-	unsigned int i;
-	unsigned char* str = dest;
-
-	i = 0;
-	while (i < len)
-	{
-		i++;
-		*str++ = c;
-	}
-	return dest;
-}
-/*
-#include <string.h>
+// #include "libft.h"
 #include <stdio.h>
-int main()
+#include <stddef.h>
+
+void    *ft_memcpy(void * dst, const void *src, size_t n)
 {
-	char str[50];
-
-	strcpy(str, "This is string.h library function");
-	puts(str);
-
-	// memset(str, 'g', 5);
-	puts(ft_memset(str, 'g', 5));
-
-}*/
+	unsigned int	i;
+	unsigned char *str;
+   
+	str = dst;
+	i = 0;
+	while(i < n)
+	{
+		str[i] = ((unsigned char *)src)[i];
+		i++;	
+	}
+	return (dst);
+}

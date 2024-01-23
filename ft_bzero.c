@@ -8,10 +8,10 @@ void ft_bzero(void *dest, size_t len)
 	while (i < len)
 	{
 		i++;
-		*str++ = NULL;
+		*str++ = 0;
 	}
 }
-
+/*
 #include <string.h>
 #include <stdio.h>
 int main()
@@ -24,4 +24,4 @@ int main()
 	// memset(str, 'g', 5);
     ft_bzero(str , 5);
 	puts(str);
-}
+}*/
