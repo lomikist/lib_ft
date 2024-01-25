@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: arsargsy <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 19:53:54 by arsargsy          #+#    #+#             */
-/*   Updated: 2023/12/06 10:22:57 by arsargsy         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <stdlib.h>
 
 char	*ft_strdup(char *src)
@@ -23,6 +11,8 @@ char	*ft_strdup(char *src)
 	while (src[i] != '\0')
 		i++;
 	result = malloc(i);
+	if (result == NULL)
+		return NULL;	
 	while (src[j] != '\0')
 	{
 		result[j] = src[j];
