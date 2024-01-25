@@ -29,27 +29,39 @@ static char	*ft_strcat(char *dest, char *src)
 	return (dest);
 }
 
+static char	*ft_strcpy(char *dest, char *src)
+{
+	int	i;
+
+	i = 0;
+	while (src[i] != '\0')
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	while (dest[i] != '\0')
+	{
+		dest[i] = '\0';
+		i++;
+	}
+	return (dest);
+}
+
+
 char    *ft_strjoin(char const *s1, char const *s2)
 {
     int len1;
     int len2;
     char *str;
 
+	if (!s1 || !s2)
+		return  (NULL);	
     len1 = ft_strlen((char *)s1);
     len2 = ft_strlen((char *)s2);
     if(!(str = malloc(len1 + len2)))
         return 0;
-    ft_strcat(str, (char *)s1);
+    ft_strcpy(str, (char *)s1);
     ft_strcat(str, (char *)s2);
     
-    str[len1 + len2] = '\0';
     return (str);
-}
-
-int main()
-{
-    char * s1;
-
-    s1 = ft_strjoin("","42");
-    printf("%s",s1);
 }
