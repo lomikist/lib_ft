@@ -3,9 +3,6 @@
 #include <string.h>
 #include <stddef.h>
 
-static int int_size(int n);
-static char* str_reverse(char *str);
-
 static int int_size(int n)
 {
 	int len;
@@ -77,14 +74,14 @@ char *ft_itoa(int n)
 	return (str);
 }
 
-int main()
-{
-	char *result = ft_itoa(0);
+// int main()
+// {
+// 	char *result = ft_itoa(0);
 
-	if (result)
-	{
-		printf("%s\n", result);
-		free(result);
-	}
-	return (0);
-}
+// 	if (result)
+// 	{
+// 		printf("%s\n", result);
+// 		free(result);
+// 	}
+// 	return (0);
+// }

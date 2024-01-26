@@ -1,16 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: arsargsy <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/22 16:59:10 by arsargsy          #+#    #+#             */
-/*   Updated: 2024/01/22 17:38:41 by arsargsy         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-void*	ft_memset(void *dest, int c, unsigned int len)
+void *	ft_memset(void *dest, int c, unsigned int len)
 {
 	unsigned int i;
 	unsigned char* str = dest;
