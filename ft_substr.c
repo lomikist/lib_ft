@@ -1,22 +1,26 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-char    *ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-    unsigned int i;
-    char *str;
+	char	*str;
+	unsigned int	i;
 
-    i = 0;
-    if (!(str = malloc(len)))
-        return 0;
-    while (s[start] != '\0' && i < len)
-    {
-        str[i] = s[start];
-        start++;
-        i++;
-    }
-    str[i] = '\0';
-    return &str[0];
+	if (!s)
+		return (NULL);
+	if (start > ft_strlen(s))
+		return (ft_strdup(""));
+	str = malloc(len + 1);
+	i = 0;
+	if (!str)
+		return (0);
+	while (i < len)
+	{
+		str[i] = *(s + start + i);
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }
 
 // int main()
