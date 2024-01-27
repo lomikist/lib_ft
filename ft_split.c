@@ -9,7 +9,7 @@ void clear_mall(char **str, int len)
 	i = 0;
 	while (i < len)
 	{
-		free(str[0]);
+		free(str[i]);
 		i++;
 	}
 }
