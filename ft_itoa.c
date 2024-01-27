@@ -3,18 +3,19 @@
 #include <string.h>
 #include <stddef.h>
 
-static int int_size(int n)
+static int	int_size(long long int n)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	if (n < 0)
 	{
 		n = -n;
-		len++;	
-	}else if(n == 0)
+		len++;
+	}
+	else if (n == 0)
 	{
-		return 1;
+		return (1);
 	}
 	while (n > 0)
 	{
@@ -24,59 +25,65 @@ static int int_size(int n)
 	return (len);
 }
 
-static char* str_reverse(char *str) {
-    size_t length = strlen(str);
-    size_t i = 0;
-    size_t j = length - 1;
+static char	*str_reverse(char *str)
+{
+	size_t	length;
+	size_t	i;
+	size_t	j;
+	char	temp;
 
-    if (str == NULL) {
-        return NULL;
-    }
-    while (i < j)
+
+	i = 0;
+	length = strlen(str);
+	j = length - 1;
+	if (str == NULL)
 	{
-        char temp = str[i];
-        str[i] = str[j];
-        str[j] = temp;
-        i++;
-        j--;
-    }
-    return str;
+		return (NULL);
+	}
+	while (i < j)
+	{
+		temp = str[i];
+		str[i] = str[j];
+		str[j] = temp;
+		i++;
+		j--;
+	}
+	return (str);
 }
 
-char *ft_itoa(int n)
+char	*ft_itoa(int n)
 {
-	int size;
-	char *str;
-	int i;
-	int sign;
+	int				size;
+	char			*str;
+	int				i;
+	long long int	m;
 
-	size = int_size(n);
-	if (n < 0)
-	{
-		sign = 1;
-		n = -n;
-	}
-	if (!(str = (char *)malloc(size + 1)))
+	m = n;
+	size = int_size(m);
+	if (m < 0)
+		m = -m;
+	str = (char *)malloc(size + 1);
+	if (!str)
 		return (NULL);
 	i = 0;
-	while (n > 0)
+	while (m > 0)
 	{
-		str[i] = (n % 10) + '0';
+		str[i] = (m % 10) + '0';
 		i++;
-		n /= 10;
+		m /= 10;
 	}
 	if (n == 0)
 		str[0] = '0';
-	if (sign == 1)
+	if (n < 0)
 		str[i] = '-';
 	str[i + 1] = '\0';
- 	str_reverse(str);
+	str_reverse(str);
 	return (str);
 }
 
 // int main()
 // {
-// 	char *result = ft_itoa(0);
+// 	char *result = ft_itoa(2147483647);
 
 // 	if (result)
 // 	{

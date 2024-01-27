@@ -49,17 +49,14 @@ char ** stick_arr(char **str, const char *s, char c, int len)
 		while ((ft_strchr(s, c) - s) == 0)
 			s++;
 		inn_str_size = ft_strchr(s, c) - s;
-		inn_str = malloc(sizeof(char) * inn_str_size);
-		// if(!inn_str)
-		// {
-		// 	clear_mall(str, (i + 1));
-		// 	return 0;
-		// }
 		inn_str = ft_substr(s, 0, inn_str_size);
+		if(inn_str == 0)
+			clear_mall(str, len);
 		str[i] = inn_str;
 		s = ft_strchr(s, c) + 1;
 		i++;
 	}
+	return str;
 }
 
 char **ft_split(char const *s, char c)
@@ -75,14 +72,17 @@ char **ft_split(char const *s, char c)
 	if (!str)
 		return 0;
 	stick_arr(str, s, c, len);
+	str[len] = NULL;
 	return str;
 }
 
 
-#include <stdio.h>
-int main(){
-    char *s1 = "     hello    darkness my old firend  ";
-	char **s2;
+// #include <stdio.h>
+// int main(){
+//     char *s1 = "      split       this for   me  !       ";
+// 	char **s2;
 
-    s2 = ft_split(s1,' ');
-}
+//     s2 = ft_split(s1,' ');
+// 	int i = 0;
+// 	i++;
+// }
