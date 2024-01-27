@@ -5,24 +5,29 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*str;
-	unsigned int	i;
+	size_t			i;
+	size_t			str_len;
+	char			*substr;
 
 	if (!s)
-		return (NULL);
-	if (start > ft_strlen(s))
-		return (ft_strdup(""));
-	str = malloc(len + 1);
-	i = 0;
-	if (!str)
 		return (0);
-	while (i < len)
+	str_len = ft_strlen(s);
+	if (start >= str_len)
+		len = 0;
+	if (len > str_len - start)
+		len = str_len - start;
+	substr = malloc(len + 1);
+	if (!substr)
+		return (0);
+	i = 0;
+	while (i < len && s[start])
 	{
-		str[i] = *(s + start + i);
+		substr[i] = s[start];
+		start++;
 		i++;
 	}
-	str[i] = '\0';
-	return (str);
+	substr[i] = '\0';
+	return (substr);
 }
 
 // int main()
