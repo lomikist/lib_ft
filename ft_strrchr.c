@@ -1,36 +1,30 @@
 #include "libft.h"
-char	*ft_strrchr(const char *s, int c)
-{
-	int			i;
-	const char	*ini;
 
-	ini = s;
-	i = ft_strlen(s);
-	s = (s + i);
-	while (*s != *ini && c != *s)
-		s--;
-	if (c == *s)
+char * ft_strrchr(const char *s, int c)
+{
+	unsigned int	i;
+	char			*str;
+	char			*start;
+
+	i = 0;
+	if(!s)
+		return "";
+	start = (char *)s;
+	str = (char *)s;
+	while (*str != '\0')
+		str++;
+	while (*str != c && str != start)
+		str--;
+	if (*s == c)
 		return ((char *)s);
-	return (0);
+	
+	return str;	
 }
 
-// char * ft_strrchr(const char *s, int c)
-// {
-//     unsigned int i;
-//     char * str;
-
-//     str = (char *)s;
-//     i = 0;
-//     while (str[i] != '\0')
-//         i++;
-//     while (i > 0)
-//     {
-//         if (str[i] == c)
-//         {
-//             return &str[i];
-//         }
-//         i--;
-//     }
-    
-//     return 0;
-// }
+#include <stdio.h>
+int main()
+{
+	char *c = "fsdfsdfsd sdafsdf sdf sdf sdf s dfdfdfdf     f";
+	c = ft_strrchr(c, 'a');
+	puts(c);
+}

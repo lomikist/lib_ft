@@ -2,12 +2,39 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	// char a[8];
+	int		i;
+	char	comb[11];
 
-	// a = (char *)n;
-	// int		len;
-
-	// a = ft_itoa(n);
-	// len = ft_strlen(a);
-	write(fd, &n, sizeof(n));
+	i = 0;
+	if (n == -2147483648)
+		write (fd, "-2147483648", 11);
+	else if (n == 0)
+		write (fd, "0", 1);
+	else
+	{
+		if (n < 0)
+		{
+			n = n * -1;
+			write (fd, "-", 1);
+		}
+		while (n > 0)
+		{
+			comb[i] = (n % 10) + 48;
+			n = n / 10;
+			i++;
+		}
+		while (i-- > 0)
+			write (fd, &comb[i], 1);
+	}
 }
+
+// #include <stdio.h>
+// #include <unistd.h>
+// #include <fcntl.h>
+// int main()
+// {
+// 	int fd = open("test.txt", O_RDWR);
+
+// 	ft_putnbr_fd(4832323, fd);
+// 	close(fd);
+// }
