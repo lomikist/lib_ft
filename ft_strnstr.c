@@ -1,35 +1,58 @@
 #include <stdio.h>
 #include <string.h>
 
+// char	*ft_strnstr(const char *haystack, const char *needle, size_t n)
+// {
+// 	char *str =		(char *)haystack;
+// 	char *to_find =	(char *)needle;
+// 	unsigned int	i;
+// 	unsigned int	j;
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t n)
+// 	i = 0;
+// 	if (needle[0] == '\0' || (!haystack && !n))
+// 		return ((char *)haystack);
+// 	while (str[i] != '\0' && i < n)
+// 	{
+// 		j = 0;
+// 		while (str[i + j] == to_find[j] && i + j < n)
+// 		{
+			
+// 			j++;
+// 		}
+// 		// while (str[i + j] == to_find[i + j] &&  && i + j < n)
+// 		// {
+// 		// 	if (needle[j + 1] == '\0')
+// 		// 		return ((char *)haystack);		
+// 		// 	j++;
+// 		// }
+// 		i++;
+// 	}
+// 	return (0);
+// }
+
+char	*ft_strnstr(char const *haystack, char const *needle, size_t n)
 {
-	char *str =		(char *)haystack;
-	char *to_find =	(char *)needle;
-	unsigned int	i;
-	unsigned int	j;
+	size_t	j;
 
-	i = 0;
-	if (needle[0] == '\0' || (!haystack && !n))
+	if (!haystack && !n)
+		return (NULL);
+	if (!*needle)
 		return ((char *)haystack);
-	while (str[i] != '\0' && i < n)
+	while (*haystack && n--)
 	{
 		j = 0;
-		while (str[i + j] == to_find[j] && i + j < n)
+		while (*(haystack + j) == *(needle + j)
+			&& *(needle + j) && j <= n)
 		{
-			
+			if (!*(needle + j + 1))
+				return ((char *)haystack);
 			j++;
 		}
-		// while (str[i + j] == to_find[i + j] &&  && i + j < n)
-		// {
-		// 	if (needle[j + 1] == '\0')
-		// 		return ((char *)haystack);		
-		// 	j++;
-		// }
-		i++;
+		haystack++;
 	}
-	return (0);
+	return (NULL);
 }
+
 
 /*
 #include <string.h>
