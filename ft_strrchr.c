@@ -3,21 +3,23 @@
 char	*ft_strrchr(const char *s, int c)
 {
 	int	len;
+	char *str;
 
-	len = ft_strlen(s);
+	str = (char *)s;
+	len = ft_strlen(str);
 	while (len >= 0)
 	{
-		if (s[len] == (char)c)
-			return (&s[len]);
+		if (str[len] == (char)c)
+			return (&str[len]);
 		len--;
 	}
 	return (0);
 }	
 
-#include <stdio.h>
-int main()
-{
-	char *c = "fsdfsdfsd sdafsdf sdf sdf sdf s dfdfdfdf     f";
-	c = ft_strrchr(c, 'a');
-	puts(c);
-}
+// #include <stdio.h>
+// int main()
+// {
+// 	char *c = "fsdfsdfsd sdafsdf sdf sdf sdf s dfdfdfdf     f";
+// 	c = ft_strrchr(c, 'a');
+// 	puts(c);
+// }
