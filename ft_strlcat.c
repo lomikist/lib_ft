@@ -4,13 +4,9 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 	unsigned int	j;
 	unsigned int	k;
 
-	i = 0;
 	j = 0;
-	k = 0;
-	while (dest[i] != '\0')
-		i++;
-	while (src[k] != '\0')
-		k++;
+	i = ft_strlen(dest);
+	k = ft_strlen(src);
 	if (i + k > size)
 		return (k + size);
 	while (src[j] != '\0' && (j + i) < size - 1)
