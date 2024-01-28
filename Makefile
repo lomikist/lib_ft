@@ -4,13 +4,8 @@ name=libft.a
 compiler=cc
 flags=-Wall -Wextra -Werror
 
-objects := $(patsubst %.c,%.o,$(wildcard *.c))
-bobjects := $(patsubst %.c,%.o,$(wildcard ft_lst*.c))
-
-#src=$(wildcard *.c)
-#bsrc=$(wildcard ft_lst*.c)
-#objects=$(src:.c=.o)
-#bobjects=$(bsrc:.c=.o)
+objects := $(patsubst %.c, %.o, $(wildcard *.c))
+bobjects := $(patsubst %.c, %.o, $(wildcard ft_lst*.c))
 
 all : $(name) $(bonus)
 

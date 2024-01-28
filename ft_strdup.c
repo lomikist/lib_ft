@@ -1,4 +1,16 @@
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arsargsy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/28 22:53:28 by arsargsy          #+#    #+#             */
+/*   Updated: 2024/01/28 22:53:34 by arsargsy         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_strdup(char *src)
 {
@@ -10,9 +22,9 @@ char	*ft_strdup(char *src)
 	j = 0;
 	while (src[i] != '\0')
 		i++;
-	result = malloc(i);
+	result = malloc(((i + 1) * sizeof(char)));
 	if (result == NULL)
-		return NULL;	
+		return (NULL);
 	while (src[j] != '\0')
 	{
 		result[j] = src[j];

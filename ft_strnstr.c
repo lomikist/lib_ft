@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arsargsy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/28 23:06:43 by arsargsy          #+#    #+#             */
+/*   Updated: 2024/01/28 23:06:45 by arsargsy         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <string.h>
 
@@ -16,7 +28,6 @@
 // 		j = 0;
 // 		while (str[i + j] == to_find[j] && i + j < n)
 // 		{
-			
 // 			j++;
 // 		}
 // 		// while (str[i + j] == to_find[i + j] &&  && i + j < n)
@@ -53,17 +64,14 @@ char	*ft_strnstr(char const *haystack, char const *needle, size_t n)
 	return (NULL);
 }
 
-
 /*
 #include <string.h>
-#include <stdio.h>
-
+#include <stdio.h
 int main () {
    char str[30] = "";
    char searchString[10] = "how";
    char *result;
    char *result2;
-
    result = strstr(str, searchString);
    result2 = ft_strstr(str, searchString);
    printf("his	-%s-- \n", result);

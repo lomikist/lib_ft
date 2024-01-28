@@ -1,8 +1,18 @@
-#include <stdlib.h>
-#include "libft.h"
-// char * ft_strchr(const char *s, int c);
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arsargsy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/28 22:50:03 by arsargsy          #+#    #+#             */
+/*   Updated: 2024/01/28 22:50:06 by arsargsy         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void clear_mall(char **str, int len)
+#include "libft.h"
+
+static void	clear_mall(char **str, int len)
 {
 	int	i;
 
@@ -35,13 +45,12 @@ static int	get_words_count(const char *s, char c)
 	return (count);
 }
 
-
-char ** stick_arr(char **str, const char *s, char c, int len)
+static char	**stick_arr(char **str, const char *s, char c, int len)
 {
-	int i;
-	int inn_str_size;
-	char *inn_str;
-	
+	int		i;
+	int		inn_str_size;
+	char	*inn_str;
+
 	i = 0;
 	inn_str_size = 0;
 	while (i < len)
@@ -50,32 +59,31 @@ char ** stick_arr(char **str, const char *s, char c, int len)
 			s++;
 		inn_str_size = ft_strchr(s, c) - s;
 		inn_str = ft_substr(s, 0, inn_str_size);
-		if(inn_str == 0)
+		if (inn_str == 0)
 			clear_mall(str, len);
 		str[i] = inn_str;
 		s = ft_strchr(s, c) + 1;
 		i++;
 	}
-	return str;
+	return (str);
 }
 
-char **ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	int		i;
 	int		len;
 	char	**str;
-	
+
 	i = 0;
 	len = 0;
 	len = get_words_count(s, c);
 	str = malloc(sizeof(char *) * (len + 1));
 	if (!str)
-		return 0;
+		return (0);
 	stick_arr(str, s, c, len);
 	str[len] = NULL;
-	return str;
+	return (str);
 }
-
 
 // #include <stdio.h>
 // int main(){
