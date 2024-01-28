@@ -1,38 +1,31 @@
 #include <stdio.h>
 #include <string.h>
 
-int	check(char *str, char *to_find)
+
+char	*ft_strnstr(const char *haystack, const char *needle, size_t n)
 {
-	int	i;
+	char *str =		(char *)haystack;
+	char *to_find =	(char *)needle;
+	unsigned int	i;
+	unsigned int	j;
 
 	i = 0;
-	while (to_find[i] != '\0' && to_find[i] == str[i])
-	{
-		i++;
-	}
-	if (to_find[i] == '\0')
-		return (1);
-	return (0);
-}
-
-char * ft_strnstr(const char *haystack, const char *needle, size_t n)
-{
-	char *str = (char *)haystack;
-	char *to_find = (char *)needle;
-	unsigned int i;
-	unsigned int j;
-
-	i = 0;
-	j = 0;
-	if (*to_find == '\0')
-		return (str);
+	if (needle[0] == '\0' || (!haystack && !n))
+		return ((char *)haystack);
 	while (str[i] != '\0' && i < n)
 	{
-		if (str[i] == to_find[0])
+		j = 0;
+		while (str[i + j] == to_find[j] && i + j < n)
 		{
-			if (check(&str[i], &to_find[j]) == 1)
-				return (&str[i]);
+			
+			j++;
 		}
+		// while (str[i + j] == to_find[i + j] &&  && i + j < n)
+		// {
+		// 	if (needle[j + 1] == '\0')
+		// 		return ((char *)haystack);		
+		// 	j++;
+		// }
 		i++;
 	}
 	return (0);
