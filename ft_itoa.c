@@ -17,88 +17,61 @@ static int	int_size(long long int n)
 	int	len;
 
 	len = 0;
-	if (n < 0)
-	{
-		n = -n;
+	if (n < 1)
 		len++;
-	}
-	else if (n == 0)
+	while (n)
 	{
-		return (1);
-	}
-	while (n > 0)
-	{
-		n = n / 10;
+		n /= 10;
 		len++;
 	}
 	return (len);
 }
 
-static char	*str_reverse(char *str)
+static char	*new_str(size_t n)
 {
-	size_t	length;
-	size_t	i;
-	size_t	j;
-	char	temp;
+	char	*str;
 
-	i = 0;
-	length = ft_strlen(str);
-	j = length - 1;
-	if (str == NULL)
+	str = (char *)malloc(n + 1);
+	if (!str)
 		return (NULL);
-	while (i < j)
-	{
-		temp = str[i];
-		str[i] = str[j];
-		str[j] = temp;
-		i++;
-		j--;
-	}
 	return (str);
-}
-
-static void	foo(char *str, int i, int n)
-{
-	if (n == 0)
-		str[0] = '0';
-	if (n < 0)
-		str[i] = '-';
 }
 
 char	*ft_itoa(int n)
 {
-	int				size;
+	unsigned int	m;
+	int				sign;
+	int				len;
 	char			*str;
-	int				i;
-	long long int	m;
 
-	m = n;
-	size = int_size(m);
-	if (m < 0)
-		m = -m;
-	str = (char *)malloc(size + 1);
+	sign = 0;
+	if (n < 0)
+		sign = 1;
+	len = int_size(n);
+	str = new_str(len);
 	if (!str)
 		return (NULL);
-	i = 0;
-	while (m > 0)
+	*(str + len) = '\0';
+	if (n < 0)
+		m = -n;
+	else
+		m = n;
+	while (len--)
 	{
-		str[i] = (m % 10) + '0';
-		i++;
+		*(str + len) = 48 + m % 10;
 		m /= 10;
 	}
-	foo(str, i, n);
-	str[i + 1] = '\0';
-	str_reverse(str);
+	if (sign)
+		*(str) = 45;
 	return (str);
 }
+
+// #include <stdio.h>
 // int main()
 // {
-// 	char *result = ft_itoa(2147483647);
+// 	char *result = ft_itoa(-140225);
 
-// 	if (result)
-// 	{
-// 		printf("%s\n", result);
-// 		free(result);
-// 	}
+// 	puts(result);
+// 	free(result);
 // 	return (0);
 // }
