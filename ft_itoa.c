@@ -78,7 +78,7 @@ char	*ft_itoa(int n)
 		m = -m;
 	str = (char *)malloc(size + 1);
 	if (!str)
-		return (0);
+		return (NULL);
 	i = 0;
 	while (m > 0)
 	{
