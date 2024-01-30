@@ -20,19 +20,26 @@ char	*ft_strtrim(char const *s1, char const *set)
 	start = 0;
 	if (!s1 || !set)
 		return (NULL);
-	end = ft_strlen((char *)s1);
-	while (ft_strchr(set, (int)s1[start]))
-		start++;
-	while (ft_strrchr(set, (int)s1[end]))
+	end = ft_strlen(s1) - 1;
+	while (ft_strchr(set, s1[start]) && s1[start])
+		++start;
+	while (end > start && ft_strchr(set, s1[end]))
 		end--;
 	if (start >= end)
-		return "";
+		return (ft_substr(s1, start, 0));
 	return (ft_substr(s1, start, end - start + 1));
 }
-// #include <stdio.h>
-// int main (){
-//     printf("dds%sdss",ft_strtrim("          ", " "));
-// }
+
+/*#include <stdio.h>
+int main (){
+	char *a;
+	a = ft_strtrim("     "," ");
+    // printf("dds%sdss",ft_strtrim("          ", " "));
+	puts(a);
+	free(a);
+	puts("dsfs");
+}
+*/
 // #include <stdio.h>
 // int main(){
 //   // const char *str1 = "dfdfdfdfdffffffhellffffffffffdddddddddd";
